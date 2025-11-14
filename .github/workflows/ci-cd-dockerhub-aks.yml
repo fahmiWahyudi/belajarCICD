@@ -15,7 +15,7 @@ on:
 env:
   NODE_VERSION: 18
   K8S_MANIFEST_DIR: k8s
-  DOCKERHUB_USERNAME: herifauzan
+  DOCKERHUB_USERNAME: fahmiwah
   # If you want a different repo name, set the repository secret DOCKERHUB_REPO.
   # Otherwise the default below will be used by the workflow script.
   DEFAULT_DOCKERHUB_REPO: pgmicroservice
@@ -37,7 +37,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: "npm"
 
       - name: Cache node modules
         uses: actions/cache@v4
@@ -114,19 +114,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }} 
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       # # Install Az CLI, Kubectl, Kubelogin
       - name: Install Kubelogin
         run: az aks install-cli --client-version 1.26.6 --kubelogin-version latest --only-show-errors
       #     sudo apt install azure-cli
       #     az aks install-cli --client-version 1.26.6 --kubelogin-version latest --only-show-errors
-          # az login --service-principal --username ${{USERNAME}} --password ${{PASSWORD}} --tenant ${{TENANT}}
-          # az account set --subscription ${{SUBSCRIPTION}}
+      # az login --service-principal --username ${{USERNAME}} --password ${{PASSWORD}} --tenant ${{TENANT}}
+      # az account set --subscription ${{SUBSCRIPTION}}
       # Runs a set of commands using the runners shell
       - name: Execute Kubectl
         run: |
@@ -134,7 +134,7 @@ jobs:
           kubelogin convert-kubeconfig -l azurecli
           kubectl get ns
       ## from aks repo
-      # Set the target Azure Kubernetes Service (AKS) cluster. 
+      # Set the target Azure Kubernetes Service (AKS) cluster.
       # - uses: azure/aks-set-context@v1
       #   with:
       #     creds: '${{ secrets.AZURE_CREDENTIALS }}'
@@ -169,6 +169,3 @@ jobs:
           kubectl get namespace "$NS" >/dev/null 2>&1 || kubectl create namespace "$NS"
           # Apply all YAML files inside the k8s/ folder (recursively) to the namespace
           kubectl apply -f k8s/ -n "$NS"
-
-
-
