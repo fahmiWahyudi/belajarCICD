@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: pgmicroservice-config
+  name: training-cicd-config
 data:
   NODE_ENV: production
   PGDATABASE: users_dev

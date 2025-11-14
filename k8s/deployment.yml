@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pgmicroservice
+  name: training-cicd
   labels:
-    app: pgmicroservice
+    app: training-cicd
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: pgmicroservice
+      app: training-cicd
   template:
     metadata:
       labels:
-        app: pgmicroservice
+        app: training-cicd
     spec:
       containers:
-        - name: pgmicroservice
-          image: fahmiwah/pgmicroservice:latest
+        - name: training-cicd
+          image: fahmiwah/training-cicd:latest
           ports:
             - containerPort: 3000
           env:

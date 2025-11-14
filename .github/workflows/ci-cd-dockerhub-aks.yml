@@ -15,10 +15,10 @@ on:
 env:
   NODE_VERSION: 18
   K8S_MANIFEST_DIR: k8s
-  DOCKERHUB_USERNAME: pgmicroservice
+  DOCKERHUB_USERNAME: training-cicd
   # If you want a different repo name, set the repository secret DOCKERHUB_REPO.
   # Otherwise the default below will be used by the workflow script.
-  DEFAULT_DOCKERHUB_REPO: pgmicroservice
+  DEFAULT_DOCKERHUB_REPO: training-cicd
 
 jobs:
   build-and-test:

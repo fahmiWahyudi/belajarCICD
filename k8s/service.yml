@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: pgmicroservice-svc
+  name: training-cicd-svc
 spec:
   type: ClusterIP
   selector:
-    app: pgmicroservice
+    app: training-cicd
   ports:
     - port: 80
       targetPort: 3000
